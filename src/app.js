@@ -11,22 +11,22 @@ console.log(publicDirectoryPath)
 // Customizing the server
 app.use(express.static(publicDirectoryPath))
 
-app.get('', (req, res) => {
-    res.send('<h1>Weather</h1>')
-})
+// app.get('', (req, res) => {
+//     res.send('<h1>Weather</h1>')
+// })
 
-app.get('/help', (req, res) => {
-    res.send([{
-        name : 'Anurag'
-    },
-    {
-        name : 'Aman'
-    }])
-})
+// app.get('/help', (req, res) => {
+//     res.send([{
+//         name : 'Anurag'
+//     },
+//     {
+//         name : 'Aman'
+//     }])
+// })
 
-app.get('/about', (req, res) => {
-    res.send('<h1>About</h1>')
-})
+// app.get('/about', (req, res) => {
+//     res.send('<h1>About</h1>')
+// })
 
 app.get('/weather', (req, res) => {
     res.send({
