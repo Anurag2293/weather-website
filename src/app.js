@@ -33,6 +33,7 @@ app.get('/about', (req, res) => {
         title : 'About me',
         name : 'Anurag Dhote'
     })
+    // console.log('Get request on /about')
 })
 
 app.get('/help', (req, res) => {
@@ -48,6 +49,24 @@ app.get('/weather', (req, res) => {
         city : 'Philadelphia',
         latitude : 21.1,
         longitude : -120
+    })
+})
+
+app.get('/help/*', (req, res) => {
+    // res.send('Help page not found')
+    res.render('404', {
+        errorMessage : 'Help article not found',
+        name : 'Anurag Dhote',
+        title : '404'
+    })
+})
+
+app.get('*', (req, res) => {
+    // res.send('My 404 page')
+    res.render('404', {
+        errorMessage : 'Page not found',
+        name : 'Anurag Dhote',
+        title : '404'
     })
 })
 
