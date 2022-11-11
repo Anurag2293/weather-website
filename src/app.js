@@ -1,7 +1,14 @@
+// Core Node Modules
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+// npm Modules
 import express from 'express';
 import hbs from 'hbs';
+
+// Custom Modules
+import forecast from './utils/forecast.js';
+import geocode from './utils/geocode.js';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -52,8 +59,21 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    res.send({
-        address : req.query.address
+    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+        if (error) {
+            return res.send({ error })
+        }
+        forecast(latitude, longitude, (forecastError, data) => {
+            if (forecastError) {
+                return res.send({
+                    error : forecastError
+                })
+            }
+            return res.send({
+                location,
+                forecast : data
+            })
+        })
     })
 })
 
