@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help</title>
+    <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    {{>header}}
+    <div class="main-content">
+        {{>header}}
 
-    <p id="message">{{helpText}}</p>
+        <p id="message">{{helpText}}</p>
+    </div>
 
     {{>footer}}
     <script src="/js/app.js"></script>
