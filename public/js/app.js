@@ -1,14 +1,21 @@
 console.log('Client side Javascript is loaded')
 
-const ele = document.getElementById('message')
-if (ele) {
-    console.log(ele.innerText)
-}
+// Fetch API --> Not a part of Node.js, rather on frontend.
+// fetch('http://puzzle.mead.io.puzzle/puzzle').then((response) => {
+//     response.json().then((data) => {
+//         console.log(data)
+//     })
+// })
 
-
-const para = document.createElement('p')
-para.textContent = 'This is a dynamically created element for about page'
-
-if (document.title === 'About'){
-    document.body.appendChild(para)
+if (document.title === 'Weather') {
+    fetch('http://localhost:3000/weather?address=washington').then((response) => {
+        response.json().then((data) => {
+            if (data.error) {
+                console.log(data.error)
+            } else {
+                console.log(data.location)
+                console.log(data.forecast)
+            }
+        })
+    })
 }

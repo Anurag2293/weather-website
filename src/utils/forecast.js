@@ -14,7 +14,7 @@ const forecast = (latitude, longitude, callback) => {
         if (error) {
             callback('Unable to connect to weather service!', undefined);
         } else if (body.error) {
-            callback('Unable to find location', undefined);
+            callback('Unable to find location. Try another search', undefined);
         } else {
             const res = body.current;
             callback(undefined, res.weather_descriptions[0] + '. It is currently ' + res.temperature + 
