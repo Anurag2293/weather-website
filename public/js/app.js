@@ -1,5 +1,3 @@
-console.log('Client side Javascript is loaded')
-
 if (document.title != 'Weather') { 
     console.log('Not the Title page') 
 } else {
@@ -12,7 +10,7 @@ if (document.title != 'Weather') {
         e.preventDefault();
 
         const location = search.value;
-        const url = 'http://localhost:3000/weather?address=' + encodeURIComponent(location);
+        const url = '/weather?address=' + encodeURIComponent(location);
 
         messageOne.textContent = 'Loading...';
         messageTwo.textContent = '';
