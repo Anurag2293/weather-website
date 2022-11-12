@@ -8,18 +8,23 @@ const geocode = (address, callback) => {
         url,
         json : true
     }
-    request(params, (error, { body }) => {
+    request(params, (error, { body }={}) => {
         if (error) {
-            callback('Unable to connect to location Services', undefined)
+            callback('Unable to connect to location Services. Please check your internet connection', undefined)
         } else if (!body.data) {
-            callback('Unable to find location via address search', undefined)
+            callback('Unable to process your request at this moment. Please try again', undefined)
         } else {
             const res = body.data[0];
-            callback(undefined, {
-                latitude : res.latitude,
-                longitude : res.longitude,
-                location : res.label
-            })
+
+            if (!res) {
+                callback('No data found. Please try again', undefined)
+            } else {
+                callback(undefined, {
+                    latitude : res.latitude,
+                    longitude : res.longitude,
+                    location : res.label
+                })
+            }
         }
     }) 
 }
