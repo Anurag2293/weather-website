@@ -17,8 +17,10 @@ const forecast = (latitude, longitude, callback) => {
             callback('We are unable to connect to servers. Please try again!', undefined);
         } else {
             const res = body.current;
-            callback(undefined, res.weather_descriptions[0] + '. It is currently ' + res.temperature + 
-            ' deg celcius and it feels like ' + res.feelslike + ' deg celcius out.')
+            const responseString = res.weather_descriptions[0] + '. It is currently ' + res.temperature + 
+            ' deg celcius and it feels like ' + res.feelslike + ' deg celcius out.' + ' The humidity is ' + 
+            res.humidity + '%.';
+            callback(undefined, responseString)
         }
     })
 }
