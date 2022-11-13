@@ -3,7 +3,7 @@ import request from "postman-request";
 
 const forecast = (latitude, longitude, callback) => {
     const url = 'http://api.weatherstack.com/current?access_key=88859bc61b8c85589acb33ad6c6ef809&query='
-                + encodeURIComponent(latitude) + ',' + encodeURIComponent(longitude) + '&units=f';
+                + encodeURIComponent(latitude) + ',' + encodeURIComponent(longitude) + '&units=m';
     
     const params = {
         url,
@@ -18,7 +18,7 @@ const forecast = (latitude, longitude, callback) => {
         } else {
             const res = body.current;
             callback(undefined, res.weather_descriptions[0] + '. It is currently ' + res.temperature + 
-            ' deg fahrenheit and it feels like ' + res.feelslike + ' deg fahrenheit out')
+            ' deg celcius and it feels like ' + res.feelslike + ' deg celcius out.')
         }
     })
 }
